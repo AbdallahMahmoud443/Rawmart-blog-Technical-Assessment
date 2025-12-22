@@ -12,7 +12,7 @@ class SignupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -36,7 +36,6 @@ class SignupRequest extends FormRequest
             name: $this->validated('name'),
             email: $this->validated('email'),
             password: $this->validated('password'),
-            password_confirmation: $this->validated('password_confirmation'),
             image: $this->validated('image')
         );
     }
