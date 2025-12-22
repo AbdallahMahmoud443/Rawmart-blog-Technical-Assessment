@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\File;
+namespace App\Payloads\v1\auth;
+
+use Illuminate\Http\UploadedFile;
 
 readonly class SignupPayload
 {
@@ -9,7 +11,7 @@ readonly class SignupPayload
      * @param string email
      * @param string password
      * @param string password_confirmation
-     * @param File image
+     * @param  UploadedFile image
 
      */
     public function __construct(
@@ -17,7 +19,7 @@ readonly class SignupPayload
         public string $email,
         public string $password,
         public string $password_confirmation,
-        public File $image,
+        public UploadedFile $image,
     ) {}
 
     public function toArray(): array
