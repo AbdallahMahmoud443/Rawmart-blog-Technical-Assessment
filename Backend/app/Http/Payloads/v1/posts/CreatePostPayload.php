@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Payloads\v1\post;
+namespace App\Http\Payloads\v1\posts;
 
 
 
