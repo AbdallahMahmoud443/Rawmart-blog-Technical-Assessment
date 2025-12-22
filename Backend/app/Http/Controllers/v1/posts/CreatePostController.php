@@ -5,8 +5,8 @@ namespace App\Http\Controllers\v1\posts;
 use App\Actions\Posts\CreatePostAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\v1\posts\CreatePostRequest;
-use Illuminate\Http\Request;
-use Tymon\JWTAuth\Payload;
+use App\Http\Responses\v1\posts\MessageResponse;
+use Illuminate\Http\Response;
 
 class CreatePostController extends Controller
 {
@@ -17,5 +17,10 @@ class CreatePostController extends Controller
     {
         $postPayload = $request->payload();
         $post =  $action->execute(payload: $postPayload);
+        return new MessageResponse(
+            message: 'Post created successfully',
+            post: $post,
+            statusCode: Response::HTTP_CREATED
+        );
     }
 }

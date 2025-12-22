@@ -2,30 +2,28 @@
 
 namespace App\Actions\Posts;
 
-
 use App\Actions\Tags\SyncTagsAction;
-use App\Http\Payloads\v1\posts\CreatePostPayload;
+use App\Http\Payloads\v1\posts\UpdatePostPayload;
 use App\Models\Post;
 use Illuminate\Support\Facades\Log;
 
-class CreatePostAction
+class UpdatePostAction
 {
     public function __construct(protected SyncTagsAction $SyncTagsAction) {}
-    public function execute(CreatePostPayload $payload): Post
+    public function execute(string $post_id, UpdatePostPayload $payload): Post
     {
         try {
-            $post = Post::create([
+            $post = Post::find($post_id);
+            $post->update([
                 'title' => $payload->title,
                 'body' => $payload->body,
-                'author' => auth()->id(),
-                'expire_date' => now()->addDays(1),
             ]);
-            Log::info('Post created successfully');
+            Log::info('Post Updated successfully');
             $this->SyncTagsAction->execute($payload->tags, $post);
             return $post;
         } catch (\Exception $e) {
-            Log::info('Error creating post', ['error' => $e->getMessage()]);
-            throw new \Exception('Error creating post');
+            Log::error('Error updating post: ' . $e->getMessage());
+            throw new \Exception('Error updating post');
         }
     }
 }
