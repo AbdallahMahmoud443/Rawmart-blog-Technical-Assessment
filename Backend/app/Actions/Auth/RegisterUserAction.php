@@ -17,10 +17,8 @@ class RegisterUserAction
         try {
 
             $imagePath =  $this->uploadImageAction->execute($payload->image);
-
             $userData = $payload->toArray();
             $userData['image'] = $imagePath;
-
             $user = User::create($userData);
             $token = auth()->login($user);
             Log::info('User created successfully with token', ['user' => $user]);
