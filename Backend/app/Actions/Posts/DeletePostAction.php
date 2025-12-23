@@ -12,6 +12,7 @@ class DeletePostAction
         try {
             $post = Post::findOrFail($id);
             $is_deleted = $post->delete();
+            Log::info('post deleted successfully');
             return $is_deleted;
         } catch (\Exception $e) {
             Log::info('Error deleting post: ' . $e->getMessage());

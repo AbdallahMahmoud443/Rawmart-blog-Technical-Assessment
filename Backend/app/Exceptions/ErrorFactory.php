@@ -7,6 +7,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Validation\ValidationException;
 use Throwable;
@@ -50,6 +51,15 @@ class ErrorFactory
                 code: "RESOURCE_NOT_FOUND",
                 link: "http://hyatt-api.test/api/v1/errors/404",
                 status: Response::HTTP_NOT_FOUND
+            );
+        } else if ($e instanceof UnauthorizedException) {
+            return new ErrorResponse(
+                title: "Unauthorized",
+                detail: $e->getMessage(),
+                instance: $request->path(),
+                code: "RESOURCE_NOT_FOUND",
+                link: "http://hyatt-api.test/api/v1/errors/401",
+                status: Response::HTTP_UNAUTHORIZED
             );
         }
         return new ErrorResponse(

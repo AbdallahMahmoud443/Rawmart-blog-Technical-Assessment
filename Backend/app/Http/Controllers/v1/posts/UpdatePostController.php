@@ -6,7 +6,10 @@ use App\Actions\Posts\UpdatePostAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\v1\posts\UpdatePostRequest;
 use App\Http\Responses\v1\posts\MessageResponse;
+use App\Models\Post;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\UnauthorizedException;
 
 class UpdatePostController extends Controller
 {
@@ -15,6 +18,12 @@ class UpdatePostController extends Controller
      */
     public function __invoke(UpdatePostRequest $request, string $id, UpdatePostAction $updatePostAction)
     {
+        if (!Gate::allows('update', Post::class)) {
+            throw new UnauthorizedException(
+                message: "You don't have permission to update this post"
+            );
+        }
+
         $post = $updatePostAction->execute(
             post_id: $id,
             payload: $request->payload()

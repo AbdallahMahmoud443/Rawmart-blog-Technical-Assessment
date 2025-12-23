@@ -14,6 +14,7 @@ class DeleteCommentAction
             ->where('user_id', auth()->id())->first();
         if (!$comment) {
             throw new ModelNotFoundException("Comment not found");
+            Log::info('Comment not found');
         }
         try {
             $comment->delete();

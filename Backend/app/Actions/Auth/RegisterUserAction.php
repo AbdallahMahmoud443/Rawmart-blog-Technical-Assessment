@@ -15,7 +15,6 @@ class RegisterUserAction
     public function execute(SignupPayload  $payload): string
     {
         try {
-
             $imagePath =  $this->uploadImageAction->execute($payload->image);
             $userData = $payload->toArray();
             $userData['image'] = $imagePath;

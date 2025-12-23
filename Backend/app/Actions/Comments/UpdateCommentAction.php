@@ -14,6 +14,7 @@ class UpdateCommentAction
         $comment = Comment::find($id);
         if (!$comment) {
             throw new ModelNotFoundException("Comment not found");
+            Log::info('Comment not found');
         }
         try {
             $comment->update([
