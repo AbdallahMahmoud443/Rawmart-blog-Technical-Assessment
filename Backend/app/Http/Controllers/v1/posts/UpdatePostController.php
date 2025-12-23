@@ -19,6 +19,7 @@ class UpdatePostController extends Controller
             post_id: $id,
             payload: $request->payload()
         );
+
         return new MessageResponse(
             message: 'Post Update successfully',
             post: $post,

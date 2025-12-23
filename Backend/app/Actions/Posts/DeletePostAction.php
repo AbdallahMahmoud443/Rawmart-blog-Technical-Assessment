@@ -10,7 +10,8 @@ class DeletePostAction
     public function execute(string $id)
     {
         try {
-            $is_deleted = Post::where('id', $id)->delete();
+            $post = Post::findOrFail($id);
+            $is_deleted = $post->delete();
             return $is_deleted;
         } catch (\Exception $e) {
             Log::info('Error deleting post: ' . $e->getMessage());

@@ -23,8 +23,8 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'sometime|required|string|max:255,unique:posts,title,' . $this->route('post')->id,
-            'body' => 'sometime|required|string|max:255',
+            'title' => 'sometimes|required|string|max:255,unique:posts,title,' . $this->id,
+            'body' => 'sometimes|required|string|max:255',
             'tags' => 'required|array',
             'tags.*' => 'required|string|max:255,unique:tags,name',
         ];

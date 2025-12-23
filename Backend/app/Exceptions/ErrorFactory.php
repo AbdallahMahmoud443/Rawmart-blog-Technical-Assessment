@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Http\Responses\v1\error\ErrorResponse;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -40,6 +41,15 @@ class ErrorFactory
                 code: "AUTHENTICATION_FAILED",
                 link: "http://hyatt-api.test/api/v1/errors/401",
                 status: Response::HTTP_UNAUTHORIZED,
+            );
+        } elseif ($e instanceof ModelNotFoundException) {
+            return new ErrorResponse(
+                title: "Resource not found",
+                detail: $e->getMessage(),
+                instance: $request->path(),
+                code: "RESOURCE_NOT_FOUND",
+                link: "http://hyatt-api.test/api/v1/errors/404",
+                status: Response::HTTP_NOT_FOUND
             );
         }
         return new ErrorResponse(

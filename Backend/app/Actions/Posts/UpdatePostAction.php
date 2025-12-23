@@ -13,7 +13,7 @@ class UpdatePostAction
     public function execute(string $post_id, UpdatePostPayload $payload): Post
     {
         try {
-            $post = Post::find($post_id);
+            $post = Post::findOrFail($post_id);
             $post->update([
                 'title' => $payload->title,
                 'body' => $payload->body,

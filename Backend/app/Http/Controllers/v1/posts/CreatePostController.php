@@ -16,7 +16,7 @@ class CreatePostController extends Controller
     public function __invoke(CreatePostRequest $request, CreatePostAction $action)
     {
         $postPayload = $request->payload();
-        $post =  $action->execute(payload: $postPayload);
+        $post = $action->execute(payload: $postPayload);
         return new MessageResponse(
             message: 'Post created successfully',
             post: $post,

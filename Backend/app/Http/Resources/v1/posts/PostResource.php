@@ -3,6 +3,7 @@
 namespace App\Http\Resources\v1\posts;
 
 use App\Http\Resources\v1\authors\AuthorResource;
+use App\Http\Resources\v1\comments\CommentResource;
 use App\Http\Resources\v1\tags\TagResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -27,6 +28,9 @@ class PostResource extends JsonResource
             'author' =>  new AuthorResource(
                 $this->whenLoaded('user')
             ),
+            'comments' => $this->whenLoaded('comments', function ($comments) {
+                return CommentResource::collection($comments);
+            })
         ];
     }
 }

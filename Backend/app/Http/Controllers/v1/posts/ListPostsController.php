@@ -14,12 +14,7 @@ class ListPostsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        try {
-
-            $posts = Post::query()->with(['user', 'tags'])->get();
-            return PostResource::collection($posts);
-        } catch (\Exception $e) {
-            throw new \Exception("error in fetch posts:" . $e->getMessage());
-        }
+        $posts = Post::query()->with(['user', 'tags'])->get();
+        return PostResource::collection($posts);
     }
 }

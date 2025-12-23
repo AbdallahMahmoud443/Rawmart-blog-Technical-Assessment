@@ -13,6 +13,7 @@ class MessageResponse implements Responsable
         private string $message,
         private Post $post,
         private int $statusCode = Response::HTTP_OK
+
     ) {}
     /**
      * Create an HTTP response that represents the object.
