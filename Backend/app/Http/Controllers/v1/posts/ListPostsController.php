@@ -16,7 +16,7 @@ class ListPostsController extends Controller
     {
         try {
 
-            $posts = Post::query()->with('user')->get();
+            $posts = Post::query()->with(['user', 'tags'])->get();
             return PostResource::collection($posts);
         } catch (\Exception $e) {
             throw new \Exception("error in fetch posts:" . $e->getMessage());

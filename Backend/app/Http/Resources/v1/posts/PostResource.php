@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\v1\posts;
 
+use App\Http\Resources\v1\authors\AuthorResource;
+use App\Http\Resources\v1\tags\TagResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +21,9 @@ class PostResource extends JsonResource
             'title' => $this->resource->title,
             'body' => $this->resource->body,
             'expire_date' => $this->resource->expire_date,
-            'tags' => $this->resource->tags,
+            'tags' => $this->whenLoaded('tags', function ($tags) {
+                return TagResource::collection($tags);
+            }),
             'author' =>  new AuthorResource(
                 $this->whenLoaded('user')
             ),

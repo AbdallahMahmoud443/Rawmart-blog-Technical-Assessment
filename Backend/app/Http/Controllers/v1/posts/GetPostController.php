@@ -15,7 +15,7 @@ class GetPostController extends Controller
     public function __invoke(Request $request, string $id)
     {
         try {
-            $post = Post::query()->with(['user'])->find($id);
+            $post = Post::query()->with(['user', 'tags'])->find($id);
             return PostResource::make($post);
         } catch (\Exception $e) {
             throw new \Exception("error in fetch post");
