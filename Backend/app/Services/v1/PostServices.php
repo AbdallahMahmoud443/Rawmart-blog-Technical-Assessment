@@ -10,6 +10,7 @@ class PostServices implements PostServicesContract
 {
     public function GetPosts(): Collection
     {
+ 
         return Post::query()->with(['user', 'tags'])->get();
     }
     public function GetPost(string $post_id): Post
