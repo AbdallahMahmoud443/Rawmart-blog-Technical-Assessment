@@ -309,21 +309,23 @@ php artisan db:seed
 php artisan serve
 ```
 
-2. To run the queue worker:
+2. To run the redis queue worker:
 
 ```bash
-php php artisan schedule:work
+php artisan queue:work redis
 ```
 
 3. To run the schedule:
 
-````bash
-php artisan queue:work redis
+```bash
+php artisan schedule:work
+```
 
 4. For development with hot reloading:
+
 ```bash
 composer run dev
-````
+```
 
 ### Commands to Run Tests
 
