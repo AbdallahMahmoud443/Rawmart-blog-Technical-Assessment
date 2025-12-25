@@ -177,7 +177,7 @@ Backend/
 
 The API is organized into versioned endpoints following RESTful conventions. All API endpoints are prefixed with `/api/v1`.
 
-#### ![](C:\laragon\www\blog-system\images\api_documentation.PNG)
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/API_Docs.png?raw=true"/>
 
 ### Authentication Endpoints
 
