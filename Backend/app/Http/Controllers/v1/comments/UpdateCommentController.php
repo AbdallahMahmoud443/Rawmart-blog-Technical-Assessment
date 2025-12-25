@@ -20,11 +20,6 @@ class UpdateCommentController extends Controller
         string $id,
         UpdateCommentAction $updateCommentAction
     ) {
-        if (!Gate::allows('update', Comment::class)) {
-            throw new UnauthorizedException(
-                message: "You don't have permission to update this Comment"
-            );
-        }
         $updateCommentAction->execute($request->payload(), $id);
         return response()->json(['message' => 'Comment updated successfully'], 200);
     }

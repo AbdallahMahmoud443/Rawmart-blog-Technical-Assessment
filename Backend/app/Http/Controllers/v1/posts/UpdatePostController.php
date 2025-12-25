@@ -18,11 +18,7 @@ class UpdatePostController extends Controller
      */
     public function __invoke(UpdatePostRequest $request, string $id, UpdatePostAction $updatePostAction)
     {
-        if (!Gate::allows('update', Post::class)) {
-            throw new UnauthorizedException(
-                message: "You don't have permission to update this post"
-            );
-        }
+      
 
         $post = $updatePostAction->execute(
             post_id: $id,

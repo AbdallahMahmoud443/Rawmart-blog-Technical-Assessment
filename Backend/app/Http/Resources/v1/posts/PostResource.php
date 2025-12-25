@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'title' => $this->resource->title,
             'body' => $this->resource->body,
             'expire_date' => $this->resource->expire_date,
+            "created_at" => $this->resource->created_at,
             'tags' => $this->whenLoaded('tags', function ($tags) {
                 return TagResource::collection($tags);
             }),

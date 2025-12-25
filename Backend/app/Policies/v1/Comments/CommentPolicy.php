@@ -3,7 +3,7 @@
 namespace App\Policies\v1\Comments;
 
 use App\Models\User;
-use App\Models\comment;
+use App\Models\Comment;
 use Illuminate\Auth\Access\Response;
 
 class CommentPolicy
@@ -19,9 +19,9 @@ class CommentPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, comment $comment): bool
+    public function view(User $user, Comment $comment): bool
     {
-        return $user->id == $comment->user_id;
+        return true;
     }
 
     /**
@@ -35,7 +35,7 @@ class CommentPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, comment $comment): bool
+    public function update(User $user, Comment $comment): bool
     {
         return $user->id == $comment->user_id;
     }
@@ -43,7 +43,7 @@ class CommentPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, comment $comment): bool
+    public function delete(User $user, Comment $comment): bool
     {
         return $user->id == $comment->user_id;
     }
@@ -51,7 +51,7 @@ class CommentPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, comment $comment): bool
+    public function restore(User $user, Comment $comment): bool
     {
         return $user->id == $comment->user_id;
     }
@@ -59,7 +59,7 @@ class CommentPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, comment $comment): bool
+    public function forceDelete(User $user, Comment $comment): bool
     {
         return $user->id == $comment->user_id;
     }

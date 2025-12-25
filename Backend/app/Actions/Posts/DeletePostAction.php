@@ -3,16 +3,24 @@
 namespace App\Actions\Posts;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\UnauthorizedException;
 
 class DeletePostAction
 {
     public function execute(string $id)
     {
+        $post = Post::findOrFail($id);
+        if (!Gate::allows('delete', $post)) {
+            throw new UnauthorizedException(
+                message: "You don't have permission to delete this post"
+            );
+        }
         try {
-            $post = Post::findOrFail($id);
             $is_deleted = $post->delete();
-            Log::info('post deleted successfully');
+            if ($is_deleted)
+                Log::info('post deleted successfully');
             return $is_deleted;
         } catch (\Exception $e) {
             Log::info('Error deleting post: ' . $e->getMessage());

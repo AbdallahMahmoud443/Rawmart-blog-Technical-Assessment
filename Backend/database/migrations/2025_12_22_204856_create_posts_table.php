@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title')->unique()->index();
             $table->text('body');
             $table->foreignUuid('author')->constrained('users')->onDelete('cascade');
-            $table->date('expire_date');
+            $table->timestamp('expire_date');
             $table->softDeletes();
             $table->timestamps();
         });

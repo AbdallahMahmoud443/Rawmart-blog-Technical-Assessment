@@ -14,7 +14,7 @@ class UploadUserImageAction
             $imageName = time() . '_' . Str::random(10) . '.' . $image->extension();
             $imagePath = $image->storeAs('user_images', $imageName, 'public');
             Log::info('Image Uploaded successfully', ['ImagePath' => $imagePath]);
-            return $imagePath;
+            return 'uploads/' . $imagePath;
         } catch (\Exception $e) {
             Log::info('Error uploading user image:', ['error' => $e->getMessage()]);
             throw new \Exception('Error uploading user image:', $e->getMessage());

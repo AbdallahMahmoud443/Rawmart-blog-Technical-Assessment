@@ -22,25 +22,27 @@ class ErrorFactory
                 detail: $e->getMessage(),
                 instance: $request->path(),
                 code: "RESOURCE_NOT_FOUND",
-                link: "http://hyatt-api.test/api/v1/errors/404",
+                link: "http://localhost:8000/api/v1/errors/404",
                 status: Response::HTTP_NOT_FOUND
             );
         } elseif ($e instanceof ValidationException) {
+
             return  new ErrorResponse(
                 title: "Validation failed",
                 detail: json_encode($e->errors()),
                 instance: $request->path(),
                 code: "VALIDATION_FAILED",
-                link: "http://hyatt-api.test/api/v1/errors/422",
+                link: "http://localhost:8000/api/v1/errors/422",
                 status: Response::HTTP_UNPROCESSABLE_ENTITY,
             );
         } elseif ($e instanceof AuthenticationException) {
+
             return  new ErrorResponse(
                 title: "Authentication failed",
                 detail: $e->getMessage(),
                 instance: $request->path(),
                 code: "AUTHENTICATION_FAILED",
-                link: "http://hyatt-api.test/api/v1/errors/401",
+                link: "http://localhost:8000/api/v1/errors/401",
                 status: Response::HTTP_UNAUTHORIZED,
             );
         } elseif ($e instanceof ModelNotFoundException) {
@@ -49,17 +51,18 @@ class ErrorFactory
                 detail: $e->getMessage(),
                 instance: $request->path(),
                 code: "RESOURCE_NOT_FOUND",
-                link: "http://hyatt-api.test/api/v1/errors/404",
+                link: "http://localhost:8000/api/v1/errors/404",
                 status: Response::HTTP_NOT_FOUND
             );
         } else if ($e instanceof UnauthorizedException) {
+
             return new ErrorResponse(
                 title: "Unauthorized",
                 detail: $e->getMessage(),
                 instance: $request->path(),
-                code: "RESOURCE_NOT_FOUND",
-                link: "http://hyatt-api.test/api/v1/errors/401",
-                status: Response::HTTP_UNAUTHORIZED
+                code: "UNAUTHORIZED",
+                link: "http://localhost:8000/api/v1/errors/403",
+                status: Response::HTTP_FORBIDDEN
             );
         }
         return new ErrorResponse(
@@ -67,7 +70,7 @@ class ErrorFactory
             detail: $e->getMessage(),
             instance: $request->path(),
             code: "INTERNAL_SERVER_ERROR",
-            link: "http://hyatt-api.test/api/v1/errors/500",
+            link: "http://localhost:8000/api/v1/errors/500",
             status: Response::HTTP_INTERNAL_SERVER_ERROR,
         );
     }

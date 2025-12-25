@@ -11,7 +11,7 @@ class LoginUserAction
 
     public function execute(LoginPayload $payload)
     {
-        if (!$token = auth()->attempt($payload->toArray())) {
+        if (!$token = auth('api')->attempt($payload->toArray())) {
             Log::info(' User failed to log in');
             throw new AuthenticationException('Invalid credentials Please check your email and password');
         }

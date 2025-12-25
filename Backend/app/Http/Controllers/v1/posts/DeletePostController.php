@@ -16,11 +16,7 @@ class DeletePostController extends Controller
      */
     public function __invoke(Request $request, string $id, DeletePostAction $deletePostAction)
     {
-        if (!Gate::allows('delete', Post::class)) {
-            throw new UnauthorizedException(
-                message: "You don't have permission to delete this post"
-            );
-        }
+   
         $is_deleted = $deletePostAction->execute($id);
         if ($is_deleted) return response()->json(['message' => 'Post deleted successfully'], 200);
     }

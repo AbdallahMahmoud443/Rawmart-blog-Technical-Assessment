@@ -2,8 +2,8 @@
 
 namespace App\Policies\v1\posts;
 
+use App\Models\Post;
 use App\Models\User;
-use App\Models\post;
 use Illuminate\Auth\Access\Response;
 
 class PostPolicy
@@ -19,7 +19,7 @@ class PostPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, post $post): bool
+    public function view(User $user, Post $post): bool
     {
         return true;
     }
@@ -35,32 +35,32 @@ class PostPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, post $post): bool
+    public function update(User $user, Post $post): bool
     {
-        return $user->id == $post->author;
+        return $user->id === $post->author;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, post $post): bool
+    public function delete(User $user, Post $post): bool
     {
-        return $user->id == $post->author;
+        return $user->id === $post->author;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, post $post): bool
+    public function restore(User $user, Post $post): bool
     {
-        return $user->id == $post->author;
+        return $user->id === $post->author;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, post $post): bool
+    public function forceDelete(User $user, Post $post): bool
     {
-        return $user->id == $post->author;
+        return $user->id === $post->author;
     }
 }

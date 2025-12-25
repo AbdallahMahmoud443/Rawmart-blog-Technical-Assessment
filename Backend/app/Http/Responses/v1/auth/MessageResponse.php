@@ -2,6 +2,7 @@
 
 namespace App\Http\Responses\v1\auth;
 
+use App\Http\Resources\v1\authors\AuthorResource;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -28,6 +29,7 @@ class MessageResponse implements Responsable
             'message' => $this->message,
             'access_token' => $this->access_token,
             'token_type' => $this->token_type,
+            'user' => AuthorResource::make(auth()->user()),
             'expire_in' => $this->expires_in,
         ], status: $this->statusCode);
     }
