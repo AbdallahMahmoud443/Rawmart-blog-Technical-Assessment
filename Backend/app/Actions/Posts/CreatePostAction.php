@@ -19,7 +19,7 @@ class CreatePostAction
                 'title' => $payload->title,
                 'body' => $payload->body,
                 'author' => auth()->id(),
-                'expire_date' => now()->addMinutes(3),
+                'expire_date' => now()->addMinutes(60 * ((int) env('EXPIRE_POST_TIME_HOUR', 1))),
             ]);
             Log::info('Post created successfully');
             $this->SyncTagsAction->execute($payload->tags, $post);
