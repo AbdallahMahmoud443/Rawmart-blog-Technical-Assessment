@@ -1,5 +1,5 @@
 # Rawmart Blog Frontend
-
+<img src:"https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/Home%20Page.png?raw=true"/>
 A modern, developer-friendly React SPA for blogging, built with Vite. It provides authenticated post creation and discussion with clean UX, route guards, and robust client-side error handling.
 
 ## Project Idea
@@ -53,7 +53,15 @@ A modern, developer-friendly React SPA for blogging, built with Vite. It provide
 ├─ package.json             # Scripts and dependencies
 └─ dist/                    # Production build output (after `npm run build`)
 ```
-
+## User Interface
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/Login.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/Register.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/Post%20list.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/post%20list%20with%20auth.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/post%20info%20with%20auth.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/post%20list%20without%20auth.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/create%20post.png?raw=true"/>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/create%20post.png?raw=true"/>
 ## Tech Stack
 
 - Frontend:
