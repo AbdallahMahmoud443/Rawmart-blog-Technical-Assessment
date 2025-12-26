@@ -1,22 +1,6 @@
 # Blog Platform API
 
-<p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/laravel/framework/actions">
-    <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
-  </a>
-  <a href="https://packagist.org/packages/laravel/framework">
-    <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
-  </a>
-  <a href="https://packagist.org/packages/laravel/framework">
-    <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
-  </a>
-</p>
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/6903464216718ad4aeb631.webp?raw=true">
 
 ## Project Idea
 
@@ -177,7 +161,7 @@ Backend/
 
 The API is organized into versioned endpoints following RESTful conventions. All API endpoints are prefixed with `/api/v1`.
 
-#### ![](C:\laragon\www\blog-system\images\api_documentation.PNG)
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/API_Docs.png?raw=true"/>
 
 ### Authentication Endpoints
 
@@ -344,7 +328,7 @@ php artisan test --testsuite=Feature
 # Run specific test file
 php artisan test tests/Feature/Post/CreatePostTest.php
 ```
-
+<img src="https://github.com/AbdallahMahmoud443/RawMart-blog-Technical-Assessment-/blob/main/images/testing.PNG?raw=true"/>
 ### Common Troubleshooting
 
 1. **JWT Secret Key Error**: If you encounter JWT errors, run:
